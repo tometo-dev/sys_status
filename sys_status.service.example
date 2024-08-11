@@ -7,6 +7,9 @@ Wants=network-online.target
 [Service]
 TimeoutStartSec=0
 Type=simple
+Environment="ROCKET_TEMPLATE_DIR=/var/opt/www/templates"
+Environment="ROCKET_ADDRESS=0.0.0.0"
+Environment="ROCKET_PORT=8080"
 ExecStart=/absolute/path/to/target/release/sys_status
 Restart=on-failure
 RestartSec=10
