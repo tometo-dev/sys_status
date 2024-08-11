@@ -2,13 +2,15 @@
 <html lang="en">
   <head>
     <title>System Status</title>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="/public/favicon.ico" type="image/png" />
     <link rel="stylesheet" href="/public/index.css" />
   </head>
   <body>
     <div class="grid justify-center">
       <div
-        class="grid h-full w-full max-w-5xl gap-4 p-4 [grid-template-columns:repeat(auto-fit,_minmax(200px,_1fr))]"
+        class="grid h-full w-full max-w-5xl gap-4 p-4 overflow-hidden [grid-template-columns:repeat(auto-fit,_minmax(200px,_1fr))]"
       >
         {# System Uptime #} {% if system_status.uptime %}
         <div
