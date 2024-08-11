@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>System Status</title>
+    <link rel="shortcut icon" href="/public/favicon.ico" type="image/png" />
+    <link rel="stylesheet" href="/public/index.css" />
+  </head>
+  <body>
+    <div class="grid justify-center">
+      <div
+        class="grid h-full w-full max-w-5xl gap-4 p-4 [grid-template-columns:repeat(auto-fit,_minmax(200px,_1fr))]"
+      >
+        {# System Uptime #} {% if system_status.uptime %}
+        <div
+          class="block w-full rounded-lg border border-gray-200 bg-white p-6 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+        >
+          <div
+            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+          >
+            System Uptime
+          </div>
+          <p class="text-lg font-semibold text-gray-700 dark:text-gray-400">
+            {{ system_status.uptime }}
+          </p>
+        </div>
+        {# CPU Usage #} {% if system_status.cpu_load %}
+        <div
+          class="block w-full rounded-lg border border-gray-200 bg-white p-6 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+        >
+          <div
+            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+          >
+            CPU Usage
+          </div>
+          <p class="text-lg font-semibold text-gray-700 dark:text-gray-400">
+            {{ system_status.cpu_load }}
+          </p>
+        </div>
+        {% endif %} {# Memory Usage #} {% if system_status.memory %}
+        <div
+          class="block w-full rounded-lg border border-gray-200 bg-white p-6 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+        >
+          <div
+            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+          >
+            Memory Usage
+          </div>
+          <p class="text-lg font-semibold text-gray-700 dark:text-gray-400">
+            {{ system_status.memory }}
+          </p>
+        </div>
+        {% endif %} {# CPU Temperature #} {% if system_status.cpu_temp %}
+        <div
+          class="block w-full rounded-lg border border-gray-200 bg-white p-6 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+        >
+          <div
+            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+          >
+            CPU Temperature
+          </div>
+          <p class="text-lg font-semibold text-gray-700 dark:text-gray-400">
+            {{ system_status.cpu_temp }}
+          </p>
+        </div>
+        {% endif %} {% endif %} {# Boot time #} {% if system_status.boot_time %}
+        <div
+          class="block w-full rounded-lg border border-gray-200 bg-white p-6 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+        >
+          <div
+            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+          >
+            Boot time
+          </div>
+          <p class="text-lg font-semibold text-gray-700 dark:text-gray-400">
+            {{ system_status.boot_time }}
+          </p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

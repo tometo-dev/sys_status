@@ -1,17 +1,26 @@
 #[macro_use]
 extern crate rocket;
 
-use rocket::serde::json::serde_json;
+use rocket::fs::{relative, FileServer};
+use rocket_dyn_templates::{context, Template};
 use std::string::String;
 
 #[get("/")]
-fn index() -> String {
-    serde_json::to_string(&get_system_status()).unwrap()
+fn index() -> Template {
+    Template::render(
+        "index",
+        &context! {
+            system_status: get_system_status()
+        },
+    )
 }
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/", routes![index])
+    rocket::build()
+        .attach(Template::fairing())
+        .mount("/public", FileServer::from(relative!("static")))
+        .mount("/", routes![index])
 }
 
 extern crate systemstat;
