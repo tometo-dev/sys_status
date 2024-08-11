@@ -1,0 +1,17 @@
+[Unit]
+Description=sys_status
+ConditionPathExists=/absolute/path/to/target/release/sys_status
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+TimeoutStartSec=0
+Type=simple
+ExecStart=/absolute/path/to/target/release/sys_status
+Restart=on-failure
+RestartSec=10
+StartLimitIntervalSec=60
+
+
+[Install]
+WantedBy=multi-user.target
